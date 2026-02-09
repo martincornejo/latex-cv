@@ -1,0 +1,225 @@
+\documentclass[11pt,a4paper]{article}
+
+% Basic packages
+\usepackage[top=0in,left=0in,right=0in,bottom=0.6in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{paracol}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{changepage}
+
+% Styling
+\definecolor{sidebar}{HTML}{E0E0E0}
+\definecolor{headergray}{HTML}{E0E0E0}
+\definecolor{darkbar}{HTML}{3B3B3B}
+\definecolor{accent}{HTML}{1F4E79}
+\hypersetup{colorlinks=true, urlcolor=accent}
+\pagecolor{white}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\fboxsep}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\columnsep}{0pt}
+\setlength{\columnseprule}{0pt}
+\columnratio{0.28,0.72}
+\setlist[itemize]{leftmargin=1.6em, labelsep=0.5em, itemsep=0.2em, topsep=0.2em}
+
+% Helper commands
+\newcommand{\leftsection}[1]{
+    \vspace{0.6em}
+    {\bfseries #1}\\
+    \vspace{0.2em}
+    \noindent\hspace*{-0.2cm}\rule{\dimexpr\linewidth-2.0cm\relax}{0.4pt}\\
+    % \vspace{0.4em}\par
+}
+
+\newcommand{\rightsection}[1]{
+    \vspace{0.8em}
+    {\large\bfseries #1}\\
+    \vspace{0.2em}
+    \noindent\hspace*{-0.4cm}\rule{\dimexpr\linewidth+0.4cm\relax}{0.4pt}
+    \vspace{0.4em}
+}
+
+\newcommand{\entry}[4]{
+    \textbf{#1} \hfill {#2}\\
+    \textit{#3} \hfill \textit{#4}\\
+}
+
+\newlength{\photoht}
+\newlength{\photowd}
+\newlength{\photorad}
+\newlength{\barht}
+\newlength{\headerpad}
+\newlength{\sidepad}
+\newlength{\mainpad}
+\newlength{\leftpanelwd}
+\setlength{\photoht}{4.5cm}
+\setlength{\photowd}{4.55cm}
+\setlength{\photorad}{0.5\photowd}
+\setlength{\barht}{0.75cm}
+\setlength{\headerpad}{0.5cm}
+\setlength{\sidepad}{0.7cm}
+\setlength{\mainpad}{1.0cm}
+\setlength{\leftpanelwd}{\dimexpr0.33\paperwidth-1cm\relax}
+
+\newcommand{\photobox}{
+    \begin{tikzpicture}
+        \clip (0,0) circle (\photorad);
+        \node at (0,0) {\includegraphics[width=\photowd,height=\photoht]{1745395862968.jpg}};
+        \draw[gray!60, line width=0.6pt] (0,0) circle (\photorad);
+    \end{tikzpicture}
+}
+
+\newcommand{\summarybox}{
+    \colorbox{headergray}{
+        \begin{minipage}[t][\photoht][t]{\linewidth}
+            \vspace*{\headerpad}
+            \hspace*{\headerpad}
+            \begin{minipage}[t]{\dimexpr\linewidth-2\headerpad\relax}
+                {\large\textbf{Battery Researcher and Engineer}}\\
+                Lorem ipsum
+            \end{minipage}
+        \end{minipage}
+    }
+}
+
+\newcommand{\headerphoto}{
+    \colorbox{sidebar}{
+        \begin{minipage}[t][\photoht][t]{\linewidth}
+            \vspace*{\headerpad}
+            \hspace*{\headerpad}
+            \photobox
+        \end{minipage}
+    }
+}
+
+\newcommand{\namebar}[1]{
+    \colorbox{darkbar}{
+        \parbox[c][\barht][c]{\paperwidth}{\hspace{\sidepad}\color{white}\bfseries\Large #1}
+    }
+}% 
+
+\begin{document}
+
+\AddToShipoutPictureBG*{\AtPageLowerLeft{\color{sidebar}\rule{\leftpanelwd}{\paperheight}}}
+
+\noindent
+\colorbox{headergray}{%
+    \begin{tabularx}{\paperwidth}{@{}p{\leftpanelwd}@{}X@{}}
+        \headerphoto &
+        \summarybox    \\
+    \end{tabularx}%
+}%
+\noindent
+\vspace*{-1pt}
+\namebar{MARTIN CORNEJO}
+
+\vspace{0.3em}
+
+\begin{paracol}{2}
+    \columncolor{sidebar}
+    \color{black}
+    \setlength{\leftskip}{\sidepad}
+    \setlength{\rightskip}{\sidepad}
+
+    % \leftsection{Contact}
+    \textbf{Phone}\\
+    +49 173 5714732\\[0.3cm]
+    \textbf{E-Mail}\\
+    \href{mailto:martincornejo@pm.me}{martincornejo@pm.me}\\[0.3cm]
+    \textbf{LinkedIn}\\
+    \href{https://linkedin.com/in/martin-cornejo-v}{linkedin.com/\\in/martin-cornejo-v}\\[0.3cm]
+    \textbf{ORCID}\\
+    \href{https://orcid.org/0009-0008-0560-9620}{0009-0008-0560-9620}\\[0.3cm]
+    \textbf{GitHub}\\
+    \href{https://github.com/martincornejo}{github.com/martincornejo}
+
+    \vspace{0.5cm}
+    \leftsection{Skill Highlights}
+    \vspace{-0.5cm}
+    \begin{itemize}
+        \item Project management
+        \item Strong decision maker
+        \item Complex problem solver
+        \item Creative design
+        \item Innovative
+        \item Service-focused
+    \end{itemize}
+
+    \vspace{0.5cm}
+    \leftsection{Languages}
+    Spanish -- Native\\
+    English -- C1 \\
+    German -- C1 \\
+    Italian -- B1 \\
+    Armenian -- A2 \\
+
+    % Right column body
+    \switchcolumn
+    \columncolor{white}
+    \color{black}
+    \begin{adjustwidth}{\mainpad}{\mainpad}
+
+        \rightsection{Experience}
+        \entry{Research associate}{03/2021 -- today}{TUM - Chair of Electrical Energy Storage Technology}{}
+        \vspace{-0.3cm}
+        \begin{itemize}
+            \item Research on digital twins for optimizing second-life battery storage systems,
+                  %  in a publicly funded project (KI-M-Bat), 
+                  collaborating with research institutions and industry partners.
+            \item Team lead for Application and System Integration: planning, coordination, and funding acquisition for research projects.
+            \item Teaching: Conducted tutorials for two lectures and one laboratory course, supervised student projects, Bachelor's and Master's theses.
+        \end{itemize}
+        \vspace{0.5cm}
+
+        \entry{Working student}{03/2019 -- 11/2020}
+        {Research group for Energy System Modelling in Siemens Corporate Technology}{}
+        \vspace{-0.3cm}
+        \begin{itemize}
+            % \item Development of a global energy demand dataset, including tools coded in Python to create and extend datasets from country energy balances.
+            \item Data acquisition, preprocessing, and analysis supporting multiple energy models deployed in industry projects.
+            \item Collaboration project with the Siemens AI-lab to identify wind turbines in satellite images with machine learning and image recognition algorithms.
+        \end{itemize}
+        \vspace{0.5cm}
+
+        \entry{Research internship}{08/2018 -- 10/2018}
+        {Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) - Ecuador}{}
+        \vspace{-0.3cm}
+        \begin{itemize}
+            \item Research on regulatory and policy framework for electromobility in Ecuador under the ``Sustainable Intermediate Cities'' program.
+            \item Assisted in organizing the ``1st International Forum on Electromobility'' (Cuenca, Ecuador, September 2018).
+        \end{itemize}
+
+        \vspace{0.5cm}
+        \rightsection{Education}
+        \entry{Master of Science: Electrical Engineering}{04/2018 -- 01/2021}
+        {Technical University of Munich}{}
+        Grade: 1,6 (Passed with Merit) \\
+        % Specialization: Power Engineering\\
+        Master's Thesis: A decentralized optimal power flow method for real-time \\applications in power distribution systems.\\[0.2cm]
+
+        \entry{Bachelor of Science: Electrical Engineering}{10/2014 -- 03/2018}
+        {Technical University of Munich}{}
+        Grade: 2,3 (Passed with Merit) \\
+        Bachelor's Thesis: Cost analysis of solar air conditioning systems.\\[0.2cm]
+
+        % \vspace{0.5cm}
+        % \rightsection{Certifications}
+        % PHP Framework (certificate): Zend, Codeigniter, Symfony.\\
+        % Programming Languages: Python, Julia, MATLAB.
+
+        % \rightsection{References}
+        % References available on request.
+
+    \end{adjustwidth}
+
+\end{paracol}
+\end{document}
